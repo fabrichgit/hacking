@@ -1,6 +1,7 @@
 import express from 'express';
 import pkg from 'pg';
-const { Client } = pkg;
+const { Pool } = pkg;
+
 import cors from 'cors';
 
 const app = express();
@@ -9,13 +10,15 @@ app.use(cors());
 app.use(express.json());
 
 
-const client = new Client({
+
+const client = new Pool({
     user: 'postgres',
-    password: 'rodyandry',
     host: 'localhost',
-    port: 5432,
-    database: 'postgres'
+    database: 'postgres',
+    password: 'rodyandry',
+    port: 5432
 });
+
 
 await client.connect();
 
