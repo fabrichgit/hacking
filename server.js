@@ -4,7 +4,6 @@ const { Pool } = pkg;
 const path = require("path");
 
 const cors = require("cors");
-const { log } = require("console");
 
 const app = express();
 
@@ -22,15 +21,15 @@ const client = new Pool({
 
 client.connect();
 
-//app.use(express.static(__dirname + '/static/style.css'));
-app.use(express.static(__dirname + '/static'));
 
-app.get('/redirection', (req, res) => {
-    res.redirect('/');
-});
+app.use(express.static(__dirname + '/static'));
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/static/STELLAR/index.html");
+});
+
+app.get('/redirection', (req, res) => {
+    res.redirect(__dirname + "/static/STELLAR/gallery.html");
 });
 
 ///insert
