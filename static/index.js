@@ -1,10 +1,8 @@
-const user = { name, lastname, email, password };
-
 async function redirect() {
     fetch('/redirection')
         .then(response => {
             if (response.ok) {
-                window.location.href = '/';
+                window.location.href = '/contact';
             }
         })
         .catch(error => {
@@ -12,7 +10,7 @@ async function redirect() {
         });
 }
 
-
+const user = {};
 async function handleInsert(event) {
     event.preventDefault();
 

@@ -28,19 +28,23 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/static/STELLAR/index.html");
 });
 
+app.get("/contact", (req, res) => {
+    res.sendFile(__dirname + "/static/STELLAR/contact.html");
+})
+
 app.get('/redirection', (req, res) => {
-    res.redirect(__dirname + "/static/STELLAR/gallery.html");
+    res.redirect("/contact");
 });
 
 ///insert
 app.post('/insert', async (req, res) => {
     console.log(req.body);
-    const { name, lname, email, password } = req.body;
+    const { name, lname, mail, password } = req.body;
 
     try {
 
         const query = 'INSERT INTO "user" (first_name, last_name, email, password) VALUES ($1, $2, $3, $4)';
-        await client.query(query, [name, lname, email, password]);
+        await client.query(query, [name, lname, mail, password]);
 
         res.sendStatus(200);
     } catch (error) {
