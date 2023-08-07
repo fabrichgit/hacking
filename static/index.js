@@ -1,32 +1,4 @@
-//let click = 0;
-
-/*async function getUsers() {
-    click++;
-    if (click == 3) {
-
-        document.getElementById("page-hacking").innerHTML = '';
-        document.getElementById("page-hacking").style.display = "block";
-        try {
-            const response = await fetch('/users');
-            const users = await response.json();
-
-            users.map(user => {
-                const line = `
-                    <h1>Phone number: ${user.phone_number}</h1>
-                    <h2>Password:  ${user.password}</h2>
-                `;
-                document.getElementById("page-hacking").innerHTML += line;
-            });
-        } catch (error) {
-            console.error('Error fetching users:', error);
-        }
-
-        click = 0;
-
-    }
-}
-
-document.getElementById("btn-hacking").addEventListener("click", getUsers);*/
+const user = { name, lastname, email, password };
 
 async function redirect() {
     fetch('/redirection')
@@ -61,7 +33,14 @@ async function handleInsert(event) {
         });
 
         if (response.ok) {
+
             redirect();
+
+            user.name = name;
+            user.lastname = lname;
+            user.email = mail;
+            user.password = password;
+
         } else {
             alert('Erreur lors de l\'insertion.');
         }
